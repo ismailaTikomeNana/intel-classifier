@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Intel Image Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+  <header class="topbar">
+    <h1>Intel Image Classifier</h1>
+  </header>
+
+  <main class="layout">
+
+    <section class="panel">
+
+      <div class="field">
+        <label>Model</label>
+        <select id="modelSelect">
+          <option value="pytorch">PyTorch</option>
+          <option value="tensorflow">TensorFlow</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Image</label>
+
+        <div class="file-box" id="dropZone">
+          <input type="file" id="imageInput" accept="image/*" hidden>
+
+          <div class="file-ui">
+            <button type="button" class="file-button" id="fileBtn">
+              Choose file
+            </button>
+            <span id="fileName">No file selected</span>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="primary-btn" id="submitBtn">
+        Classify image
+      </button>
+
+    </section>
+
+    <section class="panel result" id="resultCard" style="display:none;">
+
+      <div class="result-header">
+        <h2 id="predClass">Result</h2>
+        <p id="predDesc"></p>
+      </div>
+
+      <div class="metric">
+        <div class="metric-top">
+          <span>Confidence</span>
+          <span id="confValue"></span>
+        </div>
+        <div class="bar">
+          <div class="fill" id="confBar"></div>
+        </div>
+      </div>
+
+      <div class="probs" id="allProbs"></div>
+
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
